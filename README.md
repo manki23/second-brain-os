@@ -128,6 +128,7 @@ Full guide: [SETUP.md](./SETUP.md)
 | `second-brain-review` | `sb-review` | Senior-level PR review with inline comments |
 | `second-brain-grill` | `sb-grill` | Stress-tests a plan with structured questions |
 | `second-brain-handoff` | `sb-handoff` | Creates a handoff doc for the next session |
+| `second-brain-standup` | `sb-standup` | Writes today's standup note (Haiku, fire-and-forget) |
 
 ### Vault health checks — `VERIFIED.md`
 
@@ -148,6 +149,39 @@ Drop a `VERIFIED.md` in your vault root. Claude reads it silently at every sessi
 ```
 
 See `vault-template/VERIFIED.md` for the full template.
+
+### Repo-specific review guidance — `GUIDANCE.md`
+
+Drop a `.claude/GUIDANCE.md` in each repo you work in. `second-brain-review` reads it before producing any review comment — giving you repo-specific norms without bloating your global CLAUDE.md.
+
+```markdown
+# GUIDANCE.md — my-repo
+
+## Pre-commit checklist
+- Run formatter: `ruff format <files>`
+- Run linter: `ruff check --fix <files>`
+
+## Code review norms
+- Tests expected for all new behavior
+- Type hints on all new functions
+
+## Common pitfalls
+- Branch from `prod`, not `main`
+- Never mutate shared state in async handlers
+```
+
+### Daily standup — `second-brain-standup`
+
+Lightweight Haiku skill that writes/updates `standup/YYYY-MM-DD.md` at session end:
+
+```
+✅ Done today      — tickets closed, PRs merged, tasks completed
+🔄 Ongoing         — PRs in review, CI running, waiting states
+▶️ Can start next  — concrete next actions (max 3)
+🔮 Deferred        — explicitly postponed
+```
+
+Auto-runs as part of `sb-exit`. Can also be triggered standalone: `second-brain-standup` / `sb-standup`.
 
 ---
 

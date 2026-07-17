@@ -89,6 +89,7 @@ When the user types one of the keywords below (with or without leading `!`), rea
 | `second-brain-review` | `sb-review` | `~/.claude/skills/second-brain-review.md` |
 | `second-brain-grill` | `sb-grill` | `~/.claude/skills/second-brain-grill.md` |
 | `second-brain-handoff` | `sb-handoff` | `~/.claude/skills/second-brain-handoff.md` |
+| `second-brain-standup` | `sb-standup` | `~/.claude/skills/second-brain-standup.md` |
 
 > Tip: rename keywords to whatever feels natural — `/jarvis-*`, `/brain-*`, `/kb-*`. Just update this table.
 
