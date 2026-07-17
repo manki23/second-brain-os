@@ -1,0 +1,125 @@
+# Global AI Instructions — second-brain-os
+
+> Replace all `{{PLACEHOLDERS}}` with your values before using.
+> This file lives at `~/.claude/CLAUDE.md` (Claude Code) or equivalent for your LLM.
+
+---
+
+## Identity
+
+- Vault path: `{{YOUR_VAULT_PATH}}` (e.g. `/Users/you/second-brain`)
+- Jira org: `{{YOUR_JIRA_ORG}}` (e.g. `yourcompany.atlassian.net`)
+- Jira project: `{{YOUR_JIRA_PROJECT}}` (e.g. `ENG`)
+- GitHub username: `{{YOUR_GITHUB_USERNAME}}`
+- Name: `{{YOUR_NAME}}`
+
+---
+
+## Workflow
+
+- Primary workflow: Jira tickets + GitHub PRs
+- Always link Jira ticket in PR descriptions
+- Infer the right GitHub profile/org from the repo URL before running any `gh` command
+
+---
+
+## PR Rules
+
+- Always create PRs in **draft mode** (`gh pr create --draft`)
+- Never post a comment on a PR without explicit user approval
+- Never request reviewers without explicit user approval
+- Never merge a PR without explicit user approval
+- PR title format: `<title> ({{TICKET-PREFIX}}-XXX)`
+
+## PR Description Format
+
+```markdown
+## Problem
+<1 sentence>
+
+## Fix
+| | Before | After |
+|---|---|---|
+| <behavior> | <old> | <new> |
+
+## Test
+<1 line>
+
+Fixes [{{TICKET-PREFIX}}-XXX](https://{{YOUR_JIRA_ORG}}/browse/{{TICKET-PREFIX}}-XXX)
+```
+
+---
+
+## Git Safety
+
+- Never auto-commit without explicit confirmation
+- Never auto-push without explicit confirmation
+- Always show diff and proposed commit message before committing
+- Use git worktrees for parallel ticket work — never work directly on main checkout
+
+---
+
+## Vault Updates
+
+- Whenever user shares a status update on a ticket, PR, or project → immediately update Dashboard.md + relevant ticket note
+- Don't wait to be asked
+
+---
+
+## Memory
+
+- At start of every session, query MemPalace for context relevant to the current task
+- Use MemPalace search before asking user for context they may have provided in a prior session
+- MemPalace MCP tools available as `mcp__mempalace__*`
+
+---
+
+## Custom Skills
+
+When the user types one of the keywords below (with or without leading `!`), read the corresponding file and follow its instructions exactly.
+
+| Keyword | File |
+|---------|------|
+| `second-brain-sync` | `~/.claude/skills/second-brain-sync.md` |
+| `second-brain-exit` | `~/.claude/skills/second-brain-exit.md` |
+| `second-brain-ticket` | `~/.claude/skills/second-brain-ticket.md` |
+| `second-brain-1on1` | `~/.claude/skills/second-brain-1on1.md` |
+| `second-brain-catchup` | `~/.claude/skills/second-brain-catchup.md` |
+| `second-brain-ingest` | `~/.claude/skills/second-brain-ingest.md` |
+| `second-brain-review` | `~/.claude/skills/second-brain-review.md` |
+| `second-brain-grill` | `~/.claude/skills/second-brain-grill.md` |
+| `second-brain-handoff` | `~/.claude/skills/second-brain-handoff.md` |
+
+> Tip: rename keywords to whatever feels natural — `/jarvis-*`, `/brain-*`, `/kb-*`. Just update this table.
+
+---
+
+## Auto second-brain-exit
+
+At natural session end (user says bye / done / closing / wrapping up / exit), automatically run `second-brain-exit` without waiting to be asked.
+
+---
+
+## On Every New Session
+
+1. Read `{{YOUR_VAULT_PATH}}/Dashboard.md` for current context
+2. Query MemPalace: `mcp__mempalace__mempalace_search` for topics relevant to the current task
+3. Check `{{YOUR_VAULT_PATH}}/00-Inbox/` for unprocessed notes
+
+---
+
+## Communication Style
+
+> Customize this section to your preference. Examples below.
+
+- Be direct and concise — lead with the answer, not the reasoning
+- Short bullet points > long paragraphs
+- Technical terms, code, CLI commands: exact, never compress
+- Preserve user's language (multilingual users: Claude can respond in the language used)
+
+---
+
+## File Operations
+
+- Never delete files without explicit confirmation
+- Prefer Edit over Write for existing files
