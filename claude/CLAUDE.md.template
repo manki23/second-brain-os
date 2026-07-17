@@ -78,17 +78,17 @@ Fixes [{{TICKET-PREFIX}}-XXX](https://{{YOUR_JIRA_ORG}}/browse/{{TICKET-PREFIX}}
 
 When the user types one of the keywords below (with or without leading `!`), read the corresponding file and follow its instructions exactly.
 
-| Keyword | File |
-|---------|------|
-| `second-brain-sync` | `~/.claude/skills/second-brain-sync.md` |
-| `second-brain-exit` | `~/.claude/skills/second-brain-exit.md` |
-| `second-brain-ticket` | `~/.claude/skills/second-brain-ticket.md` |
-| `second-brain-1on1` | `~/.claude/skills/second-brain-1on1.md` |
-| `second-brain-catchup` | `~/.claude/skills/second-brain-catchup.md` |
-| `second-brain-ingest` | `~/.claude/skills/second-brain-ingest.md` |
-| `second-brain-review` | `~/.claude/skills/second-brain-review.md` |
-| `second-brain-grill` | `~/.claude/skills/second-brain-grill.md` |
-| `second-brain-handoff` | `~/.claude/skills/second-brain-handoff.md` |
+| Keyword | Shorthand | File |
+|---------|-----------|------|
+| `second-brain-sync` | `sb-sync` | `~/.claude/skills/second-brain-sync.md` |
+| `second-brain-exit` | `sb-exit` | `~/.claude/skills/second-brain-exit.md` |
+| `second-brain-ticket` | `sb-ticket` | `~/.claude/skills/second-brain-ticket.md` |
+| `second-brain-1on1` | `sb-1on1` | `~/.claude/skills/second-brain-1on1.md` |
+| `second-brain-catchup` | `sb-catchup` | `~/.claude/skills/second-brain-catchup.md` |
+| `second-brain-ingest` | `sb-ingest` | `~/.claude/skills/second-brain-ingest.md` |
+| `second-brain-review` | `sb-review` | `~/.claude/skills/second-brain-review.md` |
+| `second-brain-grill` | `sb-grill` | `~/.claude/skills/second-brain-grill.md` |
+| `second-brain-handoff` | `sb-handoff` | `~/.claude/skills/second-brain-handoff.md` |
 
 > Tip: rename keywords to whatever feels natural — `/jarvis-*`, `/brain-*`, `/kb-*`. Just update this table.
 

@@ -117,17 +117,17 @@ Full guide: [SETUP.md](./SETUP.md)
 
 ## Features
 
-| Feature | What it does |
-|---------|-------------|
-| `second-brain-sync` | Auto-updates vault from session context |
-| `second-brain-exit` | End-of-session: diary, vault update, git push |
-| `second-brain-ticket` | Creates a structured note from any Jira ticket |
-| `second-brain-1on1` | Creates a structured 1-1 meeting note |
-| `second-brain-catchup` | Processes all inbox files and routes them |
-| `second-brain-ingest` | Ingests URLs, Confluence pages, PDFs into vault |
-| `second-brain-review` | Senior-level PR review with inline comments |
-| `second-brain-grill` | Stress-tests a plan with structured questions |
-| `second-brain-handoff` | Creates a handoff doc for the next session |
+| Skill | Shorthand | What it does |
+|-------|-----------|-------------|
+| `second-brain-sync` | `sb-sync` | Auto-updates vault from session context |
+| `second-brain-exit` | `sb-exit` | End-of-session: diary, vault update, git push |
+| `second-brain-ticket` | `sb-ticket` | Creates a structured note from any Jira ticket |
+| `second-brain-1on1` | `sb-1on1` | Creates a structured 1-1 meeting note |
+| `second-brain-catchup` | `sb-catchup` | Processes all inbox files and routes them |
+| `second-brain-ingest` | `sb-ingest` | Ingests URLs, Confluence pages, PDFs into vault |
+| `second-brain-review` | `sb-review` | Senior-level PR review with inline comments |
+| `second-brain-grill` | `sb-grill` | Stress-tests a plan with structured questions |
+| `second-brain-handoff` | `sb-handoff` | Creates a handoff doc for the next session |
 
 ---
 

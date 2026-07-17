@@ -156,6 +156,22 @@ else
         -e "s|{{YOUR_GITHUB_USERNAME}}|$GITHUB_USER|g" \
         -e "s|{{TICKET-PREFIX}}|$JIRA_PROJECT|g" \
         "$REPO_DIR/claude/CLAUDE.md.template" > "$CLAUDE_MD"
+    # Append sb-* alias entries so both long and short forms work
+    cat >> "$CLAUDE_MD" << 'ALIASES'
+
+## Skill Aliases (sb-* shorthand)
+| Keyword | File |
+|---------|------|
+| `sb-sync` | `~/.claude/skills/second-brain-sync.md` |
+| `sb-exit` | `~/.claude/skills/second-brain-exit.md` |
+| `sb-ticket` | `~/.claude/skills/second-brain-ticket.md` |
+| `sb-1on1` | `~/.claude/skills/second-brain-1on1.md` |
+| `sb-catchup` | `~/.claude/skills/second-brain-catchup.md` |
+| `sb-ingest` | `~/.claude/skills/second-brain-ingest.md` |
+| `sb-review` | `~/.claude/skills/second-brain-review.md` |
+| `sb-grill` | `~/.claude/skills/second-brain-grill.md` |
+| `sb-handoff` | `~/.claude/skills/second-brain-handoff.md` |
+ALIASES
     success "~/.claude/CLAUDE.md written"
 fi
 
