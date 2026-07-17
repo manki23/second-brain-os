@@ -15,6 +15,58 @@ You keep a private Obsidian vault. Claude (or your LLM of choice) is the engine 
 
 ---
 
+## Demo
+
+A typical end-of-day session:
+
+```
+$ cd ~/second-brain && claude
+
+  ╔══════════════════════════════════════════════════════╗
+  ║  Claude Code  ·  second-brain-os                     ║
+  ╚══════════════════════════════════════════════════════╝
+
+> second-brain-exit
+
+  Reading Dashboard.md...          ✓
+  Querying MemPalace...             ✓  (3 relevant memories surfaced)
+  Scanning 00-Inbox/...             ✓  (2 unprocessed files)
+
+  SESSION MANIFEST
+  ├── tickets_touched:  ENG-142 (PR merged), ENG-156 (analysis done)
+  ├── decisions_made:   Switch eval framework to LangSmith
+  ├── tasks_completed:  PR review posted, Confluence doc updated
+  └── new_todos:        Sync with Alice on ENG-156 scope
+
+  VAULT UPDATES (confirm before writing)
+  ├── Dashboard.md          check off ENG-142, add ENG-156 next action
+  ├── 01-Work/Jira/ENG-142.md   → status: Done, PR #1847 merged
+  └── 01-Work/Jira/ENG-156.md   → next: sync Alice, re-run eval
+
+  Proceed? [y/N] y
+
+  MemPalace diary written           ✓
+  Vault updated (3 files)           ✓
+  Git: committed + pushed           ✓  "vault: session 2024-03-15"
+  Inbox: 2 files pending            ⚠  run `second-brain-catchup`
+
+  ✅  Done. See you tomorrow.
+```
+
+**Cross-session memory** — start the next day and Claude already knows where you left off:
+
+```
+> What was the decision we made about the eval framework?
+
+  [MemPalace search: "eval framework decision"]
+
+  From session 2024-03-15: "Switched to LangSmith for eval tracking.
+  Rationale: better experiment diffing than custom notebooks.
+  Next: migrate baseline runs by ENG-156 milestone."
+```
+
+---
+
 ## Architecture
 
 ```
