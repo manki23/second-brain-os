@@ -129,6 +129,26 @@ Full guide: [SETUP.md](./SETUP.md)
 | `second-brain-grill` | `sb-grill` | Stress-tests a plan with structured questions |
 | `second-brain-handoff` | `sb-handoff` | Creates a handoff doc for the next session |
 
+### Vault health checks — `VERIFIED.md`
+
+Drop a `VERIFIED.md` in your vault root. Claude reads it silently at every session start and flags issues — no noise when everything is fine.
+
+```markdown
+## Daily Checks
+- Stale focus items > 3 days → flag
+- Tickets DEPLOYING > 7 days → auto-close
+- Inbox files > 2 days → prompt catchup
+- Draft PRs > 5 days → flag
+- MemPalace vector index drift → suggest repair
+
+## Weekly Checks (Mondays)
+- OKR progress: any P0 with no movement this week?
+- Learning log: anything new captured?
+- Promotion tracking: updated in last 10 days?
+```
+
+See `vault-template/VERIFIED.md` for the full template.
+
 ---
 
 ## Adapters
