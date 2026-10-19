@@ -33,20 +33,38 @@
 
 ## PR Description Format
 
+Reviewer has 45s max. No long prose. Use this structure every time:
+
 ```markdown
 ## Problem
-<1 sentence>
+<1 sentence — what was broken or missing and why it matters>
 
 ## Fix
 | | Before | After |
 |---|---|---|
-| <behavior> | <old> | <new> |
+| <behavior 1> | <old> | <new> |
+| <behavior 2> | <old> | <new> |
+
+## Key addition *(if a new abstraction/helper was introduced)*
+<1-2 lines — name + purpose>
 
 ## Test
-<1 line>
+<1 line — what the tests cover>
 
 Fixes [{{TICKET-PREFIX}}-XXX](https://{{YOUR_JIRA_ORG}}/browse/{{TICKET-PREFIX}}-XXX)
 ```
+
+Rules:
+- **Before/After table is mandatory** — it conveys the behavior change without reading code
+- Skip "Key addition" section if no new abstraction was introduced
+- No bullet-point "Changes" section listing files — reviewers read the diff
+- Max 5 lines of prose total across the whole description
+
+## PR Comment Style
+
+- Never say "latest commit" — ambiguous if more commits land later
+- Always link the specific commit SHA: `[abc1234](https://github.com/ORG/REPO/pull/NNN/commits/FULL_SHA)`
+- Always reply to reviewer comments after addressing them — include the commit SHA link
 
 ---
 
@@ -56,6 +74,8 @@ Fixes [{{TICKET-PREFIX}}-XXX](https://{{YOUR_JIRA_ORG}}/browse/{{TICKET-PREFIX}}
 - Never auto-push without explicit confirmation
 - Always show diff and proposed commit message before committing
 - Use git worktrees for parallel ticket work — never work directly on main checkout
+- Always rebase on latest origin before starting work on a branch: `git fetch origin <base> && git rebase origin/<base>`
+- After PR is opened for review: never rebase — merge main instead (`git fetch origin main && git merge origin/main --no-edit`). Rebase rewrites history and breaks review context.
 
 ---
 
@@ -63,6 +83,7 @@ Fixes [{{TICKET-PREFIX}}-XXX](https://{{YOUR_JIRA_ORG}}/browse/{{TICKET-PREFIX}}
 
 - Whenever user shares a status update on a ticket, PR, or project → immediately update Dashboard.md + relevant ticket note
 - Don't wait to be asked
+- **DEPLOYING → DONE auto-rule**: When a Jira ticket has been in DEPLOYING state for ≥1 week, automatically transition it to DONE in Jira and update vault at the start of the next session. Track `deploying_since` date in the ticket note.
 
 ---
 
@@ -101,11 +122,20 @@ At natural session end (user says bye / done / closing / wrapping up / exit), au
 
 ---
 
+## VERIFIED.md — Session Health Checks
+
+- At the start of every session, silently read `{{YOUR_VAULT_PATH}}/VERIFIED.md` and run all active checks
+- Surface only flags that require attention (max 3) — never print "all clear"
+- Checks cover: stale focus items, DEPLOYING→DONE auto-rule, inbox overflow, stale draft PRs, MemPalace health
+
+---
+
 ## On Every New Session
 
 1. Read `{{YOUR_VAULT_PATH}}/Dashboard.md` for current context
-2. Query MemPalace: `mcp__mempalace__mempalace_search` for topics relevant to the current task
-3. Check `{{YOUR_VAULT_PATH}}/00-Inbox/` for unprocessed notes
+2. Run VERIFIED.md health checks (silent — only surface flags)
+3. Query MemPalace: `mcp__mempalace__mempalace_search` for topics relevant to the current task
+4. Check `{{YOUR_VAULT_PATH}}/00-Inbox/` for unprocessed notes
 
 ---
 
@@ -117,6 +147,30 @@ At natural session end (user says bye / done / closing / wrapping up / exit), au
 - Short bullet points > long paragraphs
 - Technical terms, code, CLI commands: exact, never compress
 - Preserve user's language (multilingual users: Claude can respond in the language used)
+
+---
+
+## Integrations
+
+> Add your MCP-powered integrations here. Examples below.
+
+- Jira: use Atlassian MCP tools for ticket management
+- Confluence: use Atlassian MCP tools for documentation
+- Slack: available for notifications and messaging
+- Never send a Slack message without showing the content and asking for confirmation first
+
+---
+
+## Writing Style — ASD-STE100 (Simplified Technical English)
+
+> Optional but recommended for PRs, docs, and decision logs.
+
+- Short sentences (≤20 words procedural, ≤25 words descriptive)
+- One instruction per sentence
+- Active voice
+- Approved words only for verbs/adjectives
+- Technical names (API names, tool names, code identifiers) are unchanged — STE does not apply to technical nomenclature
+- Reference: https://en.wikipedia.org/wiki/Simplified_Technical_English
 
 ---
 
